@@ -4,22 +4,27 @@
 
 :root {
   color-scheme: light dark;
-  --bg: #fbfbfd;
+  /* Quick design system: grigi di sistema Apple, un solo accento arancio. */
+  --bg: #f5f5f7;
   --card: #fff;
   --text: #1c1c1e;
-  --muted: #6c6c70;
-  --line: #e2e2e7;
-  --accent: #0a68d8;
+  --muted: rgba(60, 60, 67, .62);
+  --line: rgba(60, 60, 67, .12);
+  --fill: rgba(120, 120, 128, .12);
+  --accent: #D9772E;
+  --shadow: 0 4px 14px rgba(0, 0, 0, .10);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #151517;
-    --card: #1f1f22;
+    --card: #1e1e21;
     --text: #f2f2f7;
-    --muted: #9a9a9f;
-    --line: #333338;
-    --accent: #5aa7ff;
+    --muted: rgba(235, 235, 245, .62);
+    --line: rgba(235, 235, 245, .14);
+    --fill: rgba(120, 120, 128, .24);
+    --accent: #F08A3E;
+    --shadow: 0 4px 14px rgba(0, 0, 0, .40);
   }
 }
 
@@ -30,14 +35,25 @@ body {
   padding: 48px 20px 80px;
   background: var(--bg);
   color: var(--text);
-  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Segoe UI", sans-serif;
 }
 
 main { max-width: 44rem; margin: 0 auto; }
 
-h1 { font-size: 2rem; letter-spacing: -0.02em; margin: 0 0 .3em; }
-h2 { font-size: 1.15rem; margin: 2.4em 0 .6em; }
-h3 { font-size: 1rem; margin: 1.8em 0 .3em; }
+h1 { font-size: 2rem; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 .3em; }
+h2 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; margin: 2.4em 0 .6em; }
+h3 { font-size: 1rem; font-weight: 600; margin: 1.8em 0 .3em; }
+
+/* Logotipo della famiglia: nome minuscolo + quadrato accento (¼ del corpo) sulla linea di base. */
+.wordmark { font-weight: 700; letter-spacing: -0.03em; }
+.wordmark::after {
+  content: "";
+  display: inline-block;
+  width: .25em;
+  height: .25em;
+  margin-left: .08em;
+  background: var(--accent);
+}
 
 .lead { color: var(--muted); font-size: 1.05rem; margin-top: 0; }
 .muted { color: var(--muted); font-size: .92rem; }
@@ -46,15 +62,16 @@ h3 { font-size: 1rem; margin: 1.8em 0 .3em; }
 a { color: var(--accent); }
 
 code {
-  font: 0.92em ui-monospace, SFMono-Regular, Menlo, monospace;
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  font: 0.92em ui-monospace, SFMono-Regular, "IBM Plex Mono", Menlo, monospace;
+  background: var(--fill);
   padding: 1px 5px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .card {
   background: var(--card);
-  border: 1px solid var(--line);
+  border: 0.5px solid var(--line);
+  box-shadow: var(--shadow);
   border-radius: 12px;
   padding: 18px 22px;
   margin: 1.5em 0;
